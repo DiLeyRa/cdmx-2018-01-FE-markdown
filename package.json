@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/DiLeyRa/cdmx-2018-01-FE-markdown#readme",
   "dependencies": {
-    "jest": "^23.5.0"
+    "jest": "^23.5.0",
+    "marked": "^0.5.0"
   }
 }

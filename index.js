@@ -1,14 +1,19 @@
-const fs = require('fs');
+const countLine = require('./app.js');
 
-fs.readFile('./README.md', data = (err,data) => {
-    if(err){
-        console.log(err);
-    }
-    text = data.toString();
-    // console.log(text);
+// const marked = require('marked');
 
-    for(let i=0; i<text.lenght; i++){
-        let links = [];
-        
-    }
-})
+// const md = `
+//   # heading
+
+//   [link][1]
+
+//   [1]: #heading "heading"
+// `;
+
+// const tokens = marked.lexer(md);
+// console.log(tokens);
+
+// const html = marked.parser(tokens);
+// console.log(html);
+
+// console.log(tokens);
