@@ -26,30 +26,39 @@ const convertHtml = (data) => {
 
 }
 const extractUrl = (html) => {
+    linkArray = [];
     const dom = new JSDOM(html);
     const etiqueta = dom.window.document.querySelectorAll("a"); 
     etiqueta.forEach(links = (a) => {
         let urll = a.href;
         let txtCont = a.textContent;
+        let linkObj = {
+            href: a.href,
+            text: a.textContent,
+            file: ''
+        };
+        linkArray.push(linkObj);
         validation(urll, txtCont);
     });
+    console.log(linkArray);
+    states(linkArray);
 }
 
 const validation = (urll, txtCont) => {
     // console.log(urll);
-    linkArray = [];
     fetch(urll)
     .then(function(response) {
-        let linkObj = {
-            URL: response.url,
-            StatusText: response.statusText,
-            Status: response.status,
-            Text: txtCont
-        };
-        linkArray.push(linkObj);
-        console.log(linkArray.length);
+        console.log(response.url, response.statusText, response.status, txtCont);
     })
     .catch(function(err) {
         console.error(err);
     });
+}
+
+const states = (linkArray) =>{
+    console.log('Total :', linkArray.length);
+    let uniqs = linkArray.filter(function (item,index,array){
+        return array.indexOf(item) === index;
+    })
+    console.log('Uniqs :',uniqs.length)
 }
