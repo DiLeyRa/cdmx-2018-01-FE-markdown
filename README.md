@@ -4,13 +4,9 @@
 La libreria que se muestra a continuación lee y analiza archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas.
 
 
-## Instrucciones de instalación.
-
-
 ## Versiones de la librería.
 
-
-## Ejemplos (snippets) de uso.
+1.3.1
 
 ## Preámbulo
 
