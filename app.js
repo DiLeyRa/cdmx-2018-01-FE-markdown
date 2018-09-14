@@ -51,8 +51,4 @@ const validation = (url, txtCont) => {
 
 const states = (linkArray) =>{
   console.log('Total :', linkArray.length);
-  // let uniqs = linkArray.filter(function(item, index, array) {
-  //   return array.indexOf(item) === index;
-  // });
-  // console.log('Uniqs :');
 };
