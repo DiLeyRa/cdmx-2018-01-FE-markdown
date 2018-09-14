@@ -2,7 +2,6 @@ const fs = require('fs');
 const marked = require('marked');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-const array = [];
 const fetch = require('node-fetch');
 
 const readMd = () => {
@@ -10,7 +9,6 @@ const readMd = () => {
     if (err) {
       console.log(err);
     } else {
-      // console.log(data);
       convertHtml(data);
     }
   });
@@ -19,45 +17,42 @@ readMd();
 
 const convertHtml = (data) => {
   const tokens = marked.lexer(data);
-  // console.log(tokens);
   const html = marked.parser(tokens);
-  // console.log(html);
   extractUrl(html);
 };
 const extractUrl = (html) => {
   linkArray = [];
   const dom = new JSDOM(html);
-  const etiqueta = dom.window.document.querySelectorAll('a'); 
-  etiqueta.forEach(links = (direction) => {
-    let urll = direction.href;
-    let txtCont = direction.textContent;
-    let linkObj = {
-      href: direction.href,
-      text: direction.textContent,
+  const elements = dom.window.document.querySelectorAll('a');
+  elements.forEach(links = (direction) => {
+    const url = direction.href;
+    const txtCont = direction.textContent;
+    const linkObj = {
+      href: url,
+      text: txtCont,
       file: ''
     };
     linkArray.push(linkObj);
-    validation(urll, txtCont);
+    validation(url, txtCont);
   });
   console.log(linkArray);
   states(linkArray);
 };
 
-const validation = (urll, txtCont) => {
-  // console.log(urll);
-  fetch(urll)
+const validation = (url, txtCont) => {
+  fetch(url)
     .then(function(response) {
       console.log(response.url, response.statusText, response.status, txtCont);
     })
     .catch(function(err) {
-      console.error(err);
+      console.log('broken');
     });
 };
 
 const states = (linkArray) =>{
   console.log('Total :', linkArray.length);
-  let uniqs = linkArray.filter(function(item, index, array) {
-    return array.indexOf(item) === index;
-  });
-  console.log('Uniqs :', uniqs.length);
+  // let uniqs = linkArray.filter(function(item, index, array) {
+  //   return array.indexOf(item) === index;
+  // });
+  // console.log('Uniqs :');
 };

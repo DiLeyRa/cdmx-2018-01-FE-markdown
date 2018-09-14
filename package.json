@@ -1,6 +1,6 @@
 {
-  "name": "markdown",
-  "version": "1.0.0",
+  "name": "read-markdown",
+  "version": "1.3.1",
   "description": "herramienta usando Node.js, que lea y analice archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas que lee y analiza archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadisticas.",
   "main": "index.js",
   "scripts": {
@@ -17,9 +17,6 @@
   ],
   "author": "Diana Cristal Leyva Ramírez",
   "license": "MIT",
-  "bin": {
-    "mdRead": "./cli.js"
-  },
   "bugs": {
     "url": "https://github.com/DiLeyRa/cdmx-2018-01-FE-markdown/issues"
   },
